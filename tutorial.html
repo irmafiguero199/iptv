@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>IPTV Setup Tutorials Canada 2025 | Install Guide for All Devices</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --dark:#0f172a;
+  --dark2:#1e293b;
+  --dark3:#131e30;
+  --blue:#2563eb;
+  --purple:#7c3aed;
+  --grad:linear-gradient(135deg,#2563eb,#7c3aed);
+  --text:#f1f5f9;
+  --muted:#94a3b8;
+  --border:#334155;
+  --green:#22c55e;
+  --yellow:#fbbf24;
+  --red:#ef4444;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden;}
+
+/* TOP BAR */
+.topbar{background:#1e293b;padding:7px 6%;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;border-bottom:1px solid var(--border);}
+.topbar a{color:var(--muted);text-decoration:none;}
+.interac-badge{background:#fff;border-radius:4px;padding:2px 8px;font-size:.68rem;font-weight:800;color:#006ac3;}
+
+/* NAV */
+nav{background:var(--dark);border-bottom:1px solid #1e293b;padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:70px;position:sticky;top:0;z-index:999;}
+.nav-logo{font-size:1.35rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+.nav-menu{display:flex;list-style:none;}
+.nav-menu a{display:block;padding:0 14px;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;height:70px;line-height:70px;transition:color .2s;border-bottom:2px solid transparent;}
+.nav-menu a:hover,.nav-menu a.active{color:#fff;border-bottom-color:#7c3aed;}
+.btn-trial{background:var(--grad);color:#fff;border:none;padding:9px 22px;border-radius:6px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.82rem;cursor:pointer;text-decoration:none;transition:opacity .2s;}
+.btn-trial:hover{opacity:.85;}
+
+/* PAGE HERO */
+.page-hero{background:linear-gradient(160deg,var(--dark) 40%,rgba(124,58,237,.18));padding:60px 6% 50px;text-align:center;border-bottom:1px solid #1e293b;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(124,58,237,.15),transparent 70%);pointer-events:none;}
+.hero-label{display:inline-block;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.35);color:#a855f7;font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:4px;margin-bottom:18px;}
+.page-hero h1{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.5px;margin-bottom:12px;position:relative;}
+.page-hero .sub{color:var(--muted);font-size:.95rem;margin-bottom:8px;}
+.scroll-arrow{font-size:1.5rem;margin-top:10px;animation:bounce .9s infinite alternate;}
+@keyframes bounce{from{transform:translateY(0);}to{transform:translateY(8px);}}
+
+/* WARNING BOX */
+.warning-box{max-width:800px;margin:28px auto 0;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.3);border-radius:10px;padding:16px 22px;font-size:.85rem;line-height:1.7;color:#fde68a;}
+.warning-box strong{color:var(--yellow);}
+
+/* DEVICE SELECTOR */
+.device-selector{padding:50px 6% 0;max-width:960px;margin:0 auto;}
+.device-selector h2{text-align:center;font-size:1.1rem;font-weight:600;color:var(--muted);margin-bottom:28px;}
+.device-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:10px;}
+.device-grid-row2{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.device-btn{background:#1e293b;border:1px solid var(--border);border-radius:12px;padding:22px 14px;text-align:center;cursor:pointer;transition:all .2s;position:relative;}
+.device-btn:hover,.device-btn.active{border-color:#7c3aed;background:rgba(124,58,237,.12);}
+.device-btn.active::after{content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:40px;height:3px;background:var(--grad);border-radius:2px;}
+.device-btn .d-icon{font-size:1.8rem;margin-bottom:8px;}
+.device-btn .d-name{font-size:.8rem;font-weight:700;color:#e2e8f0;line-height:1.3;}
+.device-btn .d-sub{font-size:.7rem;color:var(--muted);margin-top:3px;}
+.device-btn.unsupported{opacity:.5;cursor:not-allowed;}
+.unsupported-tag{font-size:.62rem;color:#ef4444;font-weight:700;margin-top:4px;}
+
+/* GUIDE PANELS */
+.guide-container{max-width:960px;margin:0 auto;padding:0 6% 80px;}
+.guide-panel{display:none;margin-top:36px;}
+.guide-panel.visible{display:block;}
+
+/* Guide Header */
+.guide-header{background:#1e293b;border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;}
+.guide-header-left h2{font-size:1.3rem;font-weight:800;margin-bottom:10px;}
+.guide-meta{display:flex;gap:16px;flex-wrap:wrap;}
+.meta-tag{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted);}
+.meta-tag strong{color:#e2e8f0;}
+.app-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.app-tag{background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3);color:#a855f7;font-size:.72rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+.guide-header-right{text-align:right;}
+
+/* Method tabs */
+.method-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.method-tab{background:#1e293b;border:1px solid var(--border);border-radius:8px;padding:10px 18px;cursor:pointer;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:600;color:var(--muted);transition:all .2s;}
+.method-tab.active,.method-tab:hover{background:var(--grad);color:#fff;border-color:transparent;}
+
+/* Method content */
+.method-content{display:none;}
+.method-content.active{display:block;}
+
+/* Part heading */
+.part-heading{font-size:1rem;font-weight:700;color:#e2e8f0;margin:28px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.part-num{width:28px;height:28px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;}
+
+/* Steps */
+.steps-list{display:flex;flex-direction:column;gap:14px;}
+.step-item{background:#1e293b;border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;}
+.step-item:hover{border-color:rgba(124,58,237,.4);}
+.step-circle{width:32px;height:32px;border-radius:50%;background:rgba(124,58,237,.2);border:2px solid rgba(124,58,237,.5);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#a855f7;flex-shrink:0;}
+.step-body{flex:1;}
+.step-body p{font-size:.87rem;line-height:1.65;color:#cbd5e1;}
+.step-body p strong{color:#fff;}
+.step-body code{background:rgba(124,58,237,.2);color:#c4b5fd;padding:2px 8px;border-radius:4px;font-size:.82rem;font-family:monospace;}
+.step-note{background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.25);border-radius:8px;padding:12px 16px;margin-top:10px;font-size:.8rem;color:#fde68a;line-height:1.6;}
+.step-note strong{color:var(--yellow);}
+.step-warn{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.25);border-radius:8px;padding:12px 16px;margin-top:10px;font-size:.8rem;color:#fca5a5;line-height:1.6;}
+.step-warn strong{color:#f87171;}
+.step-tip{background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.25);border-radius:8px;padding:12px 16px;margin-top:10px;font-size:.8rem;color:#86efac;line-height:1.6;}
+
+/* EPG tip */
+.epg-tip{background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.3);border-radius:10px;padding:14px 18px;margin:20px 0;font-size:.84rem;color:#93c5fd;line-height:1.6;}
+.epg-tip strong{color:#60a5fa;}
+
+/* Not supported */
+.not-supported{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.25);border-radius:14px;padding:36px;text-align:center;margin-top:36px;}
+.not-supported .ns-icon{font-size:3rem;margin-bottom:16px;}
+.not-supported h3{font-size:1.1rem;font-weight:700;color:#f87171;margin-bottom:10px;}
+.not-supported p{color:var(--muted);font-size:.88rem;}
+
+/* FAQ mini */
+.guide-faq{margin-top:32px;}
+.guide-faq h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:#e2e8f0;}
+.faq-list{display:flex;flex-direction:column;gap:8px;}
+.faq-item{background:#1e293b;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.faq-q{padding:14px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.85rem;font-weight:600;user-select:none;transition:color .2s;}
+.faq-q:hover{color:#a855f7;}
+.faq-icon{width:20px;height:20px;border-radius:50%;background:#334155;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;transition:transform .3s,background .2s;}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:#7c3aed;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 18px;font-size:.83rem;color:var(--muted);line-height:1.7;}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:14px;}
+
+/* Credentials box */
+.creds-box{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:10px;padding:18px;margin-top:14px;}
+.creds-box h4{font-size:.85rem;font-weight:700;color:#c4b5fd;margin-bottom:10px;}
+.cred-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-size:.83rem;}
+.cred-label{color:var(--muted);width:120px;flex-shrink:0;}
+.cred-val{color:#e2e8f0;font-weight:500;}
+
+/* FOOTER */
+footer{background:#020617;padding:50px 6% 28px;border-top:1px solid #1e293b;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.f-brand-logo{font-size:1.2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;display:block;}
+.f-brand p{color:#475569;font-size:.81rem;line-height:1.7;margin-bottom:6px;}
+.f-col h4{font-size:.83rem;font-weight:700;margin-bottom:14px;color:#e2e8f0;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.f-col ul a{color:#475569;text-decoration:none;font-size:.8rem;transition:color .2s;}
+.f-col ul a:hover{color:#a855f7;}
+.footer-bottom{border-top:1px solid #1e293b;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.footer-bottom p{font-size:.75rem;color:#334155;}
+
+/* RESPONSIVE */
+@media(max-width:900px){.device-grid{grid-template-columns:repeat(2,1fr);}.device-grid-row2{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){.nav-menu{display:none;}.footer-top{grid-template-columns:1fr 1fr;}.guide-header{flex-direction:column;}}
+@media(max-width:480px){.device-grid,.device-grid-row2{grid-template-columns:repeat(2,1fr);}.footer-top{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="mailto:info@iptvv.ca">📧 info@iptvv.ca</a>
+  <div style="display:flex;align-items:center;gap:8px;color:var(--muted);">
+    <span class="interac-badge">Interac</span> We accept Interac e-Transfer
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">IPTVV.ca</a>
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="#" class="active">Installation Guide</a></li>
+    <li><a href="#">Reseller</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">DMCA Notice</a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+  <a href="#" class="btn-trial">Get Free Trial</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-label">IPTV Installation Guide</div>
+  <h1>How To Install IPTV</h1>
+  <h2 style="font-size:1.2rem;font-weight:600;color:var(--muted);margin-bottom:10px;">IPTV Setup Tutorials</h2>
+  <p class="sub">👇 Choose your device below and scroll down to see the installation guide</p>
+  <div class="scroll-arrow">⬇️</div>
+  <div class="warning-box">
+    ⚠️ <strong>Important:</strong> We sell the IPTV subscription only. V12Mate (our app) is free on Android/Firestick, you can use any player you want.<br>
+    <em>But other players like Hot Player, iMPlayer require you to buy their own paid license after the trial.</em><br>
+    <em>Example: Your subscription is the SIM card — you still need a phone (the player app) to use it.</em>
+  </div>
+</div>
+
+<!-- DEVICE SELECTOR -->
+<div class="device-selector" id="deviceSelector">
+  <h2>Choose your device below and scroll down to see the installation guide</h2>
+  <div class="device-grid">
+    <div class="device-btn active" onclick="showGuide('firetv',this)">
+      <div class="d-icon">🔥</div>
+      <div class="d-name">Fire TV</div>
+      <div class="d-sub">Firestick, Fire Cube</div>
+    </div>
+    <div class="device-btn" onclick="showGuide('android',this)">
+      <div class="d-icon">👽</div>
+      <div class="d-name">Android TV/Box</div>
+      <div class="d-sub">Chromecast, TCL, Sony, Nvidia Shield</div>
+    </div>
+    <div class="device-btn" onclick="showGuide('formuler',this)">
+      <div class="d-icon">📟</div>
+      <div class="d-name">Formuler Z/Dreamlink</div>
+      <div class="d-sub">Formuler & Dreamlink boxes</div>
+    </div>
+    <div class="device-btn" onclick="showGuide('smarttv',this)">
+      <div class="d-icon">📺</div>
+      <div class="d-name">Smart TV/Not Android</div>
+      <div class="d-sub">Samsung, LG, Vizio, Hisense & more</div>
+    </div>
+  </div>
+  <div class="device-grid-row2" style="margin-top:14px;">
+    <div class="device-btn" onclick="showGuide('roku',this)">
+      <div class="d-icon">🟣</div>
+      <div class="d-name">Roku Device</div>
+      <div class="d-sub">Roku TV, Streaming Stick</div>
+    </div>
+    <div class="device-btn" onclick="showGuide('ios',this)">
+      <div class="d-icon">🍎</div>
+      <div class="d-name">Apple / iOS</div>
+      <div class="d-sub">iPhone, iPad, Apple TV</div>
+    </div>
+    <div class="device-btn" onclick="showGuide('windows',this)">
+      <div class="d-icon">💻</div>
+      <div class="d-name">Windows / Mac</div>
+      <div class="d-sub">Windows PC & Mac computers</div>
+    </div>
+    <div class="device-btn" onclick="showGuide('androidphone',this)">
+      <div class="d-icon">📱</div>
+      <div class="d-name">Android Phone</div>
+      <div class="d-sub">Samsung, Pixel, Xiaomi, Oppo</div>
+    </div>
+    <div class="device-btn" onclick="showGuide('buzztv',this)">
+      <div class="d-icon">📡</div>
+      <div class="d-name">BuzzTV Box</div>
+      <div class="d-sub">All BuzzTV models</div>
+    </div>
+  </div>
+  <div style="margin-top:14px;display:grid;grid-template-columns:1fr;max-width:200px;">
+    <div class="device-btn unsupported">
+      <div class="d-icon">📦</div>
+      <div class="d-name">MAG Box</div>
+      <div class="unsupported-tag">❌ Not Supported</div>
+    </div>
+  </div>
+</div>
+
+<!-- GUIDE CONTAINER -->
+<div class="guide-container">
+
+  <!-- ===== FIRE TV ===== -->
+  <div class="guide-panel visible" id="guide-firetv">
+    <div class="guide-header">
+      <div class="guide-header-left">
+        <h2>🔥 Fire TV Stick Setup Guide</h2>
+        <div class="guide-meta">
+          <span class="meta-tag">⏱️ <strong>5–10 minutes</strong></span>
+          <span class="meta-tag">📱 <strong>Our V12Mate Player</strong></span>
+          <span class="meta-tag">✅ <strong>Beginner friendly</strong></span>
+        </div>
+        <div class="app-tags">
+          <span class="app-tag">V12Mate</span>
+          <span class="app-tag">No Server Address Needed</span>
+        </div>
+      </div>
+    </div>
+    <div class="step-warn">⚠️ <strong>Very Important:</strong> If you already have <strong>Tivimate</strong> installed, please uninstall it first — otherwise <strong>V12mate</strong> will not install.</div>
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="switchMethod(this,'ftv-written')">📝 Step-by-Step Guide</button>
+    </div>
+    <div class="method-content active" id="ftv-written">
+      <div class="part-heading"><div class="part-num">1</div>Part 1: Install Downloader App</div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Go to <strong>My Apps</strong> from Fire TV home screen.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Select <strong>Get more apps</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Choose <strong>Search</strong>, press <strong>Down</strong>, then <strong>OK</strong>. Type <strong>Downloader</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>When results show, select <strong>Downloader</strong> and press <strong>OK</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Choose <strong>Downloader</strong> → <strong>Download</strong> and wait for it to install.</p></div></div>
+        <div class="step-item"><div class="step-circle">6</div><div class="step-body"><p><em>Do not</em> open it yet. Press <strong>Back</strong> to return to the <strong>Home</strong> screen.</p></div></div>
+      </div>
+      <div class="part-heading"><div class="part-num">2</div>Part 2: Enable Developer Options & Unknown Sources</div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Go to <strong>Settings → My Fire TV</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Open <strong>About</strong> and click <strong>Fire TV Stick</strong> <strong>7 times</strong> to enable <strong>Developer Options</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Press <strong>Back</strong> → <strong>Developer Options</strong> → enable <strong>ADB debugging</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Confirm <strong>ADB debugging</strong> is <strong>On</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Select <strong>Install Unknown Apps</strong> → give <strong>Downloader</strong> permission (press <strong>OK</strong>).</p></div></div>
+        <div class="step-item"><div class="step-circle">6</div><div class="step-body"><p>Press the <strong>Home</strong> button to return home.</p><div class="step-tip">💡 <strong>Tip:</strong> If Developer Options is hidden, go to About and click Fire TV Stick 7 times to enable it.</div></div></div>
+      </div>
+      <div class="part-heading"><div class="part-num">3</div>Part 3: Install V12Mate via Downloader</div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Open <strong>Downloader</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Press <strong>Allow</strong> to grant file access. Dismiss the welcome message (press <strong>OK</strong>).</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Enter the Downloader code for V12Mate: <code>2494311</code> → press <strong>GO</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Accept <strong>Privacy Policy</strong> → <strong>Install</strong> → confirm <strong>Install</strong> again if asked.</p></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Press <strong>Install</strong> → wait until installed. When complete, press <strong>OPEN</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">6</div><div class="step-body"><p>Press <strong>Add playlist</strong>, then press <strong>V12MATE</strong>.<div class="step-note">💡 <strong>If you only see "Cancel"</strong>, your Tivimate is still installed. Uninstall it first.</div></p></div></div>
+        <div class="step-item"><div class="step-circle">7</div><div class="step-body"><p>Enter your <strong>Credentials</strong> (No Server Address needed — it's our player).</p><div class="creds-box"><h4>📋 Your Login Info (from email)</h4><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">Provided in your email</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">Provided in your email</span></div></div></div></div>
+        <div class="step-item"><div class="step-circle">8</div><div class="step-body"><p>Press <strong>Next</strong>. Make sure to keep <strong>VOD</strong> and <strong>TV channels</strong> selected.</p></div></div>
+        <div class="step-item"><div class="step-circle">9</div><div class="step-body"><p>Wait for it to process <strong>(about 1 minute)</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">10</div><div class="step-body"><p>Press <strong>Done</strong>, wait a few seconds. <strong>You're ready to watch!</strong><div class="step-warn">⚠️ <strong>If No Channels Load:</strong> Go to <strong>Settings → Playlists → V12Mate → Xtream Codes Parameters</strong> and double-check your <strong>username</strong> and <strong>password</strong>, including capital letters.</div></p></div></div>
+      </div>
+      <div class="epg-tip">📅 <strong>EPG Note:</strong> The EPG (guide information) loads in the background. Please give it some time. You can view it in <strong>Settings → EPG</strong>.</div>
+    </div>
+    <div class="guide-faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">What is V12Mate, and how does it work on Firestick? <div class="faq-icon">+</div></div><div class="faq-a">V12Mate is a media player app for IPTV on Firestick, organizing channels/playlists with an EPG (Electronic Program Guide). It requires a subscription from us.</div></div>
+        <div class="faq-item"><div class="faq-q">Is V12Mate compatible with all Firestick models? <div class="faq-icon">+</div></div><div class="faq-a">Yes, V12Mate works with most Firestick models. Ensure you have enough storage space and a solid Wi-Fi connection for optimal performance.</div></div>
+        <div class="faq-item"><div class="faq-q">No content showing on V12Mate? <div class="faq-icon">+</div></div><div class="faq-a">Delete or edit the playlist and re-add it — it may have been entered incorrectly. Please check your credentials carefully.</div></div>
+        <div class="faq-item"><div class="faq-q">Troubleshooting tips? <div class="faq-icon">+</div></div><div class="faq-a">Re-enable unknown sources/ADB if needed, clear cache if app is slow, reinstall for major issues, or use a VPN if your ISP blocks streaming.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ANDROID TV ===== -->
+  <div class="guide-panel" id="guide-android">
+    <div class="guide-header">
+      <div class="guide-header-left">
+        <h2>👽 Android TV/Box Setup Guide</h2>
+        <div class="guide-meta">
+          <span class="meta-tag">⏱️ <strong>3–5 minutes</strong></span>
+          <span class="meta-tag">📺 <strong>Our V12Mate Player</strong></span>
+          <span class="meta-tag">✅ <strong>Easy setup</strong></span>
+        </div>
+        <div class="app-tags">
+          <span class="app-tag">V12Mate</span>
+          <span class="app-tag">Perfect Player</span>
+          <span class="app-tag">TiviMate</span>
+        </div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:10px;">Compatible: Sony, TCL, Hisense, Philips, Nvidia Shield, Chromecast with Google TV, Mi Box, and most Android TV boxes</p>
+      </div>
+    </div>
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="switchMethod(this,'atv-m1')">Method 1: Downloader App</button>
+      <button class="method-tab" onclick="switchMethod(this,'atv-m2')">Method 2: Google Play Store</button>
+    </div>
+    <div class="method-content active" id="atv-m1">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Search for <strong>Downloader</strong> in the Play Store and tap <strong>Install</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Press <strong>Allow</strong> when prompted, click <strong>OK</strong> to confirm. Downloader is ready.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Enter the Downloader code for V12Mate: <code>2494311</code> → press <strong>GO</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Accept <strong>Privacy Policy</strong> → <strong>Install</strong> → confirm if asked. When complete, press <strong>OPEN</strong>.</p><div class="step-warn">⚠️ If you already have Tivimate installed, uninstall it first.</div></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Press <strong>Add playlist</strong> → press <strong>V12MATE</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">6</div><div class="step-body"><p>Enter your <strong>Credentials</strong> (No server URL needed).</p><div class="creds-box"><h4>📋 Your Login Info</h4><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">Provided in your email</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">Provided in your email</span></div></div></div></div>
+        <div class="step-item"><div class="step-circle">7</div><div class="step-body"><p>Press <strong>Next</strong> → keep <strong>VOD</strong> and <strong>TV channels</strong> selected → wait ~1 minute → Press <strong>Done</strong>. <strong>You're ready!</strong></p></div></div>
+      </div>
+      <div class="epg-tip">📅 <strong>EPG Note:</strong> Guide info loads in the background. View it in <strong>Settings → EPG</strong>.</div>
+      <div class="step-note" style="margin-top:14px;">💡 <strong>Note:</strong> Go to <strong>Settings → Security & Restrictions</strong>, select the app, and toggle <strong>Allow unknown apps</strong> if installing from outside Play Store.</div>
+    </div>
+    <div class="method-content" id="atv-m2">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Open <strong>Google Play Store</strong> on your Android TV.<div class="step-note">⚠️ <strong>VOD on TiviMate</strong> only works with their Premium. Our service (trial & subscription) already has VOD built in.</div></p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Search for <strong>TiviMate IPTV Player</strong> and click <strong>Install</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Open TiviMate, select <strong>Add Playlist</strong>, choose <strong>Xtream Codes</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Enter your IPTVV credentials: <strong>Server URL</strong>, <strong>Username</strong>, <strong>Password</strong>. Done!</p></div></div>
+      </div>
+    </div>
+    <div class="guide-faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">Can I use V12Mate with any IPTV provider? <div class="faq-icon">+</div></div><div class="faq-a">V12Mate only works with our service because it is our own dedicated player, and it's free with your subscription.</div></div>
+        <div class="faq-item"><div class="faq-q">Is TiviMate owned by IPTVV Canada? <div class="faq-icon">+</div></div><div class="faq-a">No, TiviMate is not owned by IPTVV Canada. We only own and support our own player, V12Mate. TiviMate is a third-party player and requires a premium license to unlock all features.</div></div>
+        <div class="faq-item"><div class="faq-q">Is V12Mate compatible with my Android TV device? <div class="faq-icon">+</div></div><div class="faq-a">V12Mate is compatible with most Android TV devices running Android 5.0 or higher. Check your system version in Settings > About.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FORMULER ===== -->
+  <div class="guide-panel" id="guide-formuler">
+    <div class="guide-header">
+      <div class="guide-header-left">
+        <h2>📟 Formuler Z / Dreamlink Setup Guide</h2>
+        <div class="guide-meta">
+          <span class="meta-tag">⏱️ <strong>5–8 minutes</strong></span>
+          <span class="meta-tag">✅ <strong>Xtream Codes</strong></span>
+        </div>
+        <div class="app-tags"><span class="app-tag">MyTVOnline 2 & 3</span><span class="app-tag">DOL2 App</span></div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:10px;">Compatible: Formuler Z8, Z10, Z11, GTV, and all Formuler Android TV boxes</p>
+      </div>
+    </div>
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="switchMethod(this,'form-m1')">Formuler Z: MyTVOnline 2 & 3</button>
+      <button class="method-tab" onclick="switchMethod(this,'form-m2')">Dreamlink: DOL2 App</button>
+    </div>
+    <div class="method-content active" id="form-m1">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Open <strong>MyTVOnline 2 or 3</strong> from your Formuler home screen.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Navigate to <strong>Menu → Connections → Add Portal</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Configure your connection:</p><div class="creds-box"><h4>📋 Portal Configuration</h4><div class="cred-row"><span class="cred-label">Portal Name:</span><span class="cred-val">Any name (e.g. "My IPTV")</span></div><div class="cred-row"><span class="cred-label">Portal URL:</span><span class="cred-val">Your server URL (from email)</span></div><div class="cred-row"><span class="cred-label">Login Required:</span><span class="cred-val">Enable this option</span></div><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">Your IPTV username</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">Your IPTV password</span></div></div></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Press <strong>"Connect"</strong> to establish the connection. Your channels should now load!</p></div></div>
+      </div>
+      <div class="step-note" style="margin-top:16px;">💡 <strong>Important:</strong> Unlike MAG boxes, Formuler and Dreamlink boxes don't require MAC address registration. You only need your username and password.</div>
+    </div>
+    <div class="method-content" id="form-m2">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Open <strong>DOL2 App</strong> from your Dreamlink home screen.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Go to <strong>Menu → Portals → Edit Portal</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Enter your portal configuration:</p><div class="creds-box"><h4>📋 Portal Configuration</h4><div class="cred-row"><span class="cred-label">Portal Title:</span><span class="cred-val">Any name you prefer</span></div><div class="cred-row"><span class="cred-label">Portal URL:</span><span class="cred-val">Your IPTV server URL</span></div><div class="cred-row"><span class="cred-label">Login Required:</span><span class="cred-val">Yes, activate this</span></div><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">Your credentials</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">Your credentials</span></div></div></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Save the configuration and <strong>restart the app</strong> to connect.</p></div></div>
+      </div>
+    </div>
+    <div class="guide-faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">Do I need to register MAC address for Formuler? <div class="faq-icon">+</div></div><div class="faq-a">No, Formuler boxes use Xtream Codes login method, so you only need username and password from your IPTV provider.</div></div>
+        <div class="faq-item"><div class="faq-q">What's the difference between MyTVOnline 1 and 2? <div class="faq-icon">+</div></div><div class="faq-a">MyTVOnline 2 is the newer version with improved interface and better Xtream Codes support. We recommend using MyTVOnline 2 for better performance.</div></div>
+        <div class="faq-item"><div class="faq-q">Why won't my channels load? <div class="faq-icon">+</div></div><div class="faq-a">Check that "Login Required" is enabled, verify your credentials are correct, ensure stable internet connection, and try restarting the MyTVOnline app.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SMART TV ===== -->
+  <div class="guide-panel" id="guide-smarttv">
+    <div class="guide-header">
+      <div class="guide-header-left">
+        <h2>📺 Smart TV Setup Guide — All Brands</h2>
+        <div class="guide-meta">
+          <span class="meta-tag">⏱️ <strong>5–7 minutes</strong></span>
+          <span class="meta-tag">📺 <strong>LG, Samsung, Sony & More</strong></span>
+          <span class="meta-tag">✅ <strong>App Store</strong></span>
+        </div>
+        <div class="app-tags"><span class="app-tag">Hot Player</span><span class="app-tag">Perfect Player</span></div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:10px;">Compatible: LG WebOS, Samsung Tizen, Sony Android TV, TCL, Hisense, Vizio, and other major brands</p>
+      </div>
+    </div>
+    <div class="step-note">💡 <strong>Important:</strong> If your Smart TV has the Google Play Store, please follow the Android TV tutorial instead of this one.</div>
+    <div class="steps-list" style="margin-top:20px;">
+      <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>On your Smart TV, open your <strong>App Store</strong> (LG Content Store, Samsung Apps, etc.).</p></div></div>
+      <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>In the search bar, type <strong>"Hot IPTV"</strong> or <strong>"Hot Player"</strong>. Select and click <strong>Install/Download</strong>.</p></div></div>
+      <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Open <strong>Hot Player</strong> app. You will see your <strong>MAC Address</strong> displayed on the screen. Write it down or take a photo.</p></div></div>
+      <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>On your phone/computer, visit <strong>hotplayer.app</strong> → click <strong>"Upload List"</strong> → enter your MAC Address → click <strong>"Next"</strong>.</p></div></div>
+      <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Change Source to <strong>"Xtream Code"</strong> and fill in your details:</p><div class="creds-box"><h4>📋 Playlist Configuration</h4><div class="cred-row"><span class="cred-label">Playlist Name:</span><span class="cred-val">Any name (e.g. "My IPTV")</span></div><div class="cred-row"><span class="cred-label">Host:</span><span class="cred-val">Your Server Address (from email)</span></div><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">Your IPTV username</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">Your IPTV password</span></div></div></div></div>
+      <div class="step-item"><div class="step-circle">6</div><div class="step-body"><p>Click <strong>"Save"</strong>. Return to your Smart TV, click <strong>Refresh</strong> or restart the <strong>Hot Player</strong> app. Your IPTV channels should now load!</p></div></div>
+    </div>
+    <div class="guide-faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">How much does Hot Player cost? <div class="faq-icon">+</div></div><div class="faq-a">Hot Player costs $9 CAD for 1 year or $21 CAD for a lifetime license. The app itself doesn't include any channels or content — users need their own IPTV subscription.</div></div>
+        <div class="faq-item"><div class="faq-q">Where do I find the MAC Address on my Smart TV? <div class="faq-icon">+</div></div><div class="faq-a">The MAC Address is displayed in the Hot Player app under the "Account" section. It's automatically generated when you first open the app on your Smart TV.</div></div>
+        <div class="faq-item"><div class="faq-q">Why are my channels not loading? <div class="faq-icon">+</div></div><div class="faq-a">Check your internet connection, verify your IPTV credentials are correct, ensure your subscription is active, restart the Hot Player app, or contact your IPTV provider for support.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ROKU ===== -->
+  <div class="guide-panel" id="guide-roku">
+    <div class="guide-header">
+      <div class="guide-header-left">
+        <h2>🟣 Roku Device Setup Guide</h2>
+        <div class="guide-meta">
+          <span class="meta-tag">⏱️ <strong>5–7 minutes</strong></span>
+          <span class="meta-tag">📺 <strong>Hot Player</strong></span>
+          <span class="meta-tag">✅ <strong>Channel Store</strong></span>
+        </div>
+        <div class="app-tags"><span class="app-tag">Hot Player</span><span class="app-tag">Perfect Player</span></div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:10px;">Compatible: All Roku devices including Roku TV, Ultra, Streaming Stick, and Roku Express</p>
+      </div>
+    </div>
+    <div class="steps-list">
+      <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>On your Roku device, open the <strong>Roku Channel Store</strong>. Type <strong>"Hot IPTV"</strong> or <strong>"Hot Player"</strong> in the search bar.</p></div></div>
+      <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Select <strong>Hot Player</strong> from results and click <strong>"Add Channel"</strong> to install.</p></div></div>
+      <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Open the <strong>Hot Player</strong> app. You will see your <strong>MAC Address</strong> on the screen. Write it down or take a photo.</p></div></div>
+      <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>On your phone/computer, visit <strong>hotplayer.app</strong> → click <strong>"Upload List"</strong> → enter your MAC Address → click <strong>"Next"</strong>.</p></div></div>
+      <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Change Source to <strong>"Xtream Code"</strong> and fill in your details:</p><div class="creds-box"><h4>📋 Playlist Configuration</h4><div class="cred-row"><span class="cred-label">Playlist Name:</span><span class="cred-val">Any name (e.g. "My IPTV")</span></div><div class="cred-row"><span class="cred-label">Host:</span><span class="cred-val">Your Server Address</span></div><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">Your IPTV username</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">Your IPTV password</span></div></div></div></div>
+      <div class="step-item"><div class="step-circle">6</div><div class="step-body"><p>Click <strong>"Save"</strong>. Return to your Roku device, click <strong>Refresh</strong> or restart the <strong>Hot Player</strong> app. Your channels should now load!</p><div class="step-tip">💡 For best streaming quality, ensure at least 25 Mbps for HD and 50+ Mbps for 4K.</div></div></div>
+    </div>
+    <div class="guide-faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">Where do I find the MAC Address on my Roku? <div class="faq-icon">+</div></div><div class="faq-a">The MAC Address is displayed in the Hot Player app under the "Account" section. It's automatically generated when you first open the app on your Roku device.</div></div>
+        <div class="faq-item"><div class="faq-q">What if Hot Player isn't available in my region? <div class="faq-icon">+</div></div><div class="faq-a">Hot Player availability varies by region. You can try changing your Roku account region or use alternative IPTV apps like IBO Player Pro, GSE Smart IPTV, or other apps available in the Roku Channel Store.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I use multiple playlists on one Roku device? <div class="faq-icon">+</div></div><div class="faq-a">Yes, Hot Player supports multiple playlists. You can add several playlists through the web interface at hotplayer.app and easily switch between them on your Roku device.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== iOS ===== -->
+  <div class="guide-panel" id="guide-ios">
+    <div class="guide-header">
+      <div class="guide-header-left">
+        <h2>🍎 iPhone & iPad Setup Guide</h2>
+        <div class="guide-meta">
+          <span class="meta-tag">⏱️ <strong>3 minutes</strong></span>
+          <span class="meta-tag">📱 <strong>App Store</strong></span>
+          <span class="meta-tag">✅ <strong>No jailbreak</strong></span>
+        </div>
+        <div class="app-tags"><span class="app-tag">iMPlayer</span><span class="app-tag">Smarters Player Lite</span></div>
+      </div>
+    </div>
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="switchMethod(this,'ios-m1')">Method 1: iMPlayer (Recommended)</button>
+      <button class="method-tab" onclick="switchMethod(this,'ios-m2')">Method 2: Smarters Player Lite</button>
+    </div>
+    <div class="method-content active" id="ios-m1">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Download <strong>iMPlayer - IPTV Player</strong> from the App Store.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Open the app and click on <strong>"Add a Playlist"</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Select playlist type <strong>"XC API"</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Fill in your details:</p><div class="creds-box"><h4>📋 Your Credentials</h4><div class="cred-row"><span class="cred-label">Playlist Name:</span><span class="cred-val">Choose any name</span></div><div class="cred-row"><span class="cred-label">Portal URL:</span><span class="cred-val">Server URL from email</span></div><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">From your email</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">From your email</span></div></div></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Click <strong>"Add Playlist"</strong>, wait until contents finish downloading and enjoy streaming!</p><div class="step-tip">💡 For better performance, ensure you're connected to stable WiFi. Cellular data may cause buffering.</div></div></div>
+      </div>
+    </div>
+    <div class="method-content" id="ios-m2">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Download <strong>Smarters Player Lite</strong> from the App Store.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Open app and tap <strong>Add User</strong>, select <strong>Login with Xtream Codes API</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Use the login details provided to you after subscribing. Then click on <strong>"ADD USER"</strong> to continue.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Wait a few seconds for the app to process your details.</p></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Tap the <strong>"Live TV"</strong> icon to start watching. Select the channel category you want and tap a channel name to play.</p></div></div>
+      </div>
+    </div>
+    <div class="guide-faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">Do I need to jailbreak my Apple TV? <div class="faq-icon">+</div></div><div class="faq-a">No, all recommended apps are available directly from the App Store. No jailbreak required.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I use these apps on Apple TV? <div class="faq-icon">+</div></div><div class="faq-a">Yes! iMPlayer and other IPTV apps support Apple TV. You can also use AirPlay to stream from your iPhone/iPad to Apple TV.</div></div>
+        <div class="faq-item"><div class="faq-q">Why is EPG not loading? <div class="faq-icon">+</div></div><div class="faq-a">Make sure "Auto-update EPG" is enabled in app settings. Some providers may take a few minutes to load the full guide.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WINDOWS/MAC ===== -->
+  <div class="guide-panel" id="guide-windows">
+    <div class="guide-header">
+      <div class="guide-header-left">
+        <h2>💻 Windows & Mac Setup Guide</h2>
+        <div class="guide-meta">
+          <span class="meta-tag">⏱️ <strong>5 minutes</strong></span>
+          <span class="meta-tag">💻 <strong>Desktop apps</strong></span>
+          <span class="meta-tag">✅ <strong>Full HD support</strong></span>
+        </div>
+        <div class="app-tags"><span class="app-tag">IPTV Smarters Pro</span><span class="app-tag">MyIPTV Player</span><span class="app-tag">VLC Player</span></div>
+      </div>
+    </div>
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="switchMethod(this,'win-m1')">Method 1: IPTV Smarters Pro</button>
+      <button class="method-tab" onclick="switchMethod(this,'win-m2')">Method 2: MyIPTV Player</button>
+    </div>
+    <div class="method-content active" id="win-m1">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Open a browser and go to the official website: <strong>iptvsmarters.com</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Click on the <strong>"Downloads"</strong> section and download the <strong>Windows or Mac</strong> version of IPTV Smarters Pro.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Once the download completes, open the installer. If Windows asks for permission, click <strong>"Yes"</strong>. Installation takes under 2 minutes.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Launch the app. Click <strong>Add New User</strong>, then choose <strong>"Login with Xtream Codes API"</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Enter your IPTV account details:</p><div class="creds-box"><h4>📋 Your Credentials</h4><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">From your email</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">From your email</span></div><div class="cred-row"><span class="cred-label">Portal URL:</span><span class="cred-val">Server URL from email</span></div></div></div></div>
+        <div class="step-item"><div class="step-circle">6</div><div class="step-body"><p>That's it! <strong>You're ready to start streaming.</strong><div class="step-tip">💡 For best performance on PC/Mac, use a wired ethernet connection when possible.</div></p></div></div>
+      </div>
+    </div>
+    <div class="method-content" id="win-m2">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Download <strong>MyIPTV Player</strong> from the Microsoft Store (search "MyIPTV Player").</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Go to the <strong>Settings</strong> tab, then click on <strong>"Add new playlist and EPG source"</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Add your M3U playlist:</p><div class="creds-box"><h4>📋 Playlist Details</h4><div class="cred-row"><span class="cred-label">Name:</span><span class="cred-val">e.g. "IPTVV"</span></div><div class="cred-row"><span class="cred-label">URL:</span><span class="cred-val">M3U link from your email</span></div></div></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Click <strong>Add remote list</strong>. Go back to Settings and choose your playlist from the <strong>Select Channel Playlist</strong> dropdown.</p></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Done! Go to the <strong>Channels</strong> tab, choose your country, and start watching!</p></div></div>
+      </div>
+    </div>
+    <div class="guide-faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">Can I use VLC Player for IPTV? <div class="faq-icon">+</div></div><div class="faq-a">Yes, VLC can play M3U playlists. Go to Media > Open Network Stream and paste your M3U URL. However, dedicated IPTV apps offer better features.</div></div>
+        <div class="faq-item"><div class="faq-q">System requirements for IPTV apps? <div class="faq-icon">+</div></div><div class="faq-a">Windows 7 or newer, Mac OS X 10.10 or newer. At least 4GB RAM and a stable internet connection (25+ Mbps recommended).</div></div>
+        <div class="faq-item"><div class="faq-q">Can I record shows on PC/Mac? <div class="faq-icon">+</div></div><div class="faq-a">Some apps like IPTV Smarters Pro support recording features. Check your IPTV provider's terms of service regarding recording content.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ANDROID PHONE ===== -->
+  <div class="guide-panel" id="guide-androidphone">
+    <div class="guide-header">
+      <div class="guide-header-left">
+        <h2>📱 Android Phone & Tablet Setup Guide</h2>
+        <div class="guide-meta">
+          <span class="meta-tag">⏱️ <strong>3 minutes</strong></span>
+          <span class="meta-tag">📱 <strong>Play Store</strong></span>
+          <span class="meta-tag">✅ <strong>Mobile optimized</strong></span>
+        </div>
+        <div class="app-tags"><span class="app-tag">iMPlayer Mobile</span><span class="app-tag">TiviMate Mobile</span><span class="app-tag">Perfect Player</span></div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:10px;">Requirements: Android 5.0 or higher, stable WiFi or 4G/5G connection</p>
+      </div>
+    </div>
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="switchMethod(this,'aph-m1')">Method 1: iMPlayer (Recommended)</button>
+      <button class="method-tab" onclick="switchMethod(this,'aph-m2')">Method 2: TiviMate Mobile</button>
+      <button class="method-tab" onclick="switchMethod(this,'aph-m3')">Method 3: Official APK</button>
+    </div>
+    <div class="method-content active" id="aph-m1">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Download <strong>iMPlayer - IPTV Player</strong> from Google Play Store.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Open the app and click on <strong>"Add a Playlist"</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Select playlist type <strong>"XC API"</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Fill in your details:</p><div class="creds-box"><h4>📋 Your Credentials</h4><div class="cred-row"><span class="cred-label">Playlist Name:</span><span class="cred-val">Choose any name</span></div><div class="cred-row"><span class="cred-label">Portal URL:</span><span class="cred-val">Server URL from email</span></div><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">From your email</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">From your email</span></div></div></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Click <strong>"Add Playlist"</strong>, wait until contents finish downloading and enjoy streaming!</p><div class="step-tip">💡 <strong>Data tip:</strong> Use WiFi when possible. Streaming uses ~1GB/hr at standard quality, 3GB/hr at HD quality.</div></div></div>
+      </div>
+    </div>
+    <div class="method-content" id="aph-m2">
+      <div class="step-warn" style="margin-bottom:16px;">⚠️ <strong>VOD on TiviMate</strong> only works with their Premium. Our service already has VOD built in.</div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Open <strong>Google Play Store</strong> and search for <strong>TiviMate IPTV Player</strong>. Tap <strong>Install</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Open TiviMate, tap <strong>Add Playlist</strong>. Select <strong>Xtream Codes</strong> or <strong>M3U Playlist</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Enter IPTVV credentials: <strong>Server URL</strong>, <strong>Username</strong>, <strong>Password</strong>. Tap <strong>Next</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Wait for channels to load, then start watching!</p></div></div>
+      </div>
+    </div>
+    <div class="method-content" id="aph-m3">
+      <div class="steps-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>Go to the official site: <strong>tivimate.com</strong> and download the <strong>APK</strong>.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Allow installs from <em>unknown sources</em> if prompted (Settings > Security).</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Open the file to install TiviMate, then launch the app.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Follow the same steps as Method 2 to add your IPTV playlist.</p></div></div>
+      </div>
+    </div>
+    <div class="guide-faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">Why do I see "invalid" when logging into TiviMate? <div class="faq-icon">+</div></div><div class="faq-a">Double-check the host/username/password. Typos are common. Make sure there are no extra spaces and the URL starts with http:// or https://</div></div>
+        <div class="faq-item"><div class="faq-q">What internet speed is recommended? <div class="faq-icon">+</div></div><div class="faq-a">For smooth streaming: 10 Mbps for SD, 25 Mbps for HD, 50+ Mbps for 4K. Test your speed at fast.com</div></div>
+        <div class="faq-item"><div class="faq-q">Can I cast to TV from my phone? <div class="faq-icon">+</div></div><div class="faq-a">Yes, most IPTV apps support Chromecast. Look for the cast icon in the player. You can also use screen mirroring on compatible TVs.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BUZZTV ===== -->
+  <div class="guide-panel" id="guide-buzztv">
+    <div class="guide-header">
+      <div class="guide-header-left">
+        <h2>📡 BuzzTV Setup Guide</h2>
+        <div class="guide-meta">
+          <span class="meta-tag">⏱️ <strong>5–8 minutes</strong></span>
+          <span class="meta-tag">✅ <strong>Xtream Codes</strong></span>
+        </div>
+        <div class="app-tags"><span class="app-tag">XC API Login</span><span class="app-tag">Recommended</span></div>
+        <p style="font-size:.82rem;color:var(--muted);margin-top:10px;">Compatible: BuzzTV XPL 3000, XRS 4000, XRS 4500, E2000, and all BuzzTV Android boxes</p>
+      </div>
+    </div>
+    <div class="steps-list">
+      <div class="step-item"><div class="step-circle">1</div><div class="step-body"><p>From your BuzzTV home screen, navigate to <strong>Server Settings</strong>.</p></div></div>
+      <div class="step-item"><div class="step-circle">2</div><div class="step-body"><p>Select <strong>XC API Login</strong> → <strong>Add XC API Login</strong>.</p></div></div>
+      <div class="step-item"><div class="step-circle">3</div><div class="step-body"><p>Configure your Xtream Codes connection:</p><div class="creds-box"><h4>📋 Connection Details</h4><div class="cred-row"><span class="cred-label">Portal Name:</span><span class="cred-val">Any name (e.g. "My IPTV")</span></div><div class="cred-row"><span class="cred-label">Portal URL:</span><span class="cred-val">Your server URL from email</span></div><div class="cred-row"><span class="cred-label">Username:</span><span class="cred-val">Your IPTV username</span></div><div class="cred-row"><span class="cred-label">Password:</span><span class="cred-val">Your IPTV password</span></div></div></div></div>
+      <div class="step-item"><div class="step-circle">4</div><div class="step-body"><p>Press <strong>"Connect"</strong> or <strong>"Save"</strong> to establish the connection.</p></div></div>
+      <div class="step-item"><div class="step-circle">5</div><div class="step-body"><p>Return to home screen and select <strong>Live TV</strong> to start watching!</p></div></div>
+    </div>
+    <div class="guide-faq">
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q">What's the difference between XC API Login and MAC Server? <div class="faq-icon">+</div></div><div class="faq-a">XC API Login uses username/password (Xtream Codes), while MAC Server uses your device's MAC address. XC API Login is more flexible and recommended for most users.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I use multiple IPTV services on BuzzTV? <div class="faq-icon">+</div></div><div class="faq-a">Yes, you can configure multiple connections in Server Settings and switch between different IPTV providers easily from the home screen.</div></div>
+        <div class="faq-item"><div class="faq-q">Why won't my channels load? <div class="faq-icon">+</div></div><div class="faq-a">Verify your credentials are correct, ensure stable internet connection, check that you're using the correct connection method (XC API vs MAC), and try restarting the BuzzTV app.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /guide-container -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="f-brand">
+      <span class="f-brand-logo">IPTVV.ca</span>
+      <p>Canada's premier IPTV provider for over 15 years. Delivering premium streaming with 99.9% uptime and 24/7 Canadian support.</p>
+      <p>📍 159 Henderson Ave, Ottawa, ON, K1N 7P7</p>
+    </div>
+    <div class="f-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Installation Guide</a></li>
+        <li><a href="#">IPTV Reseller</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Terms & Condition</a></li>
+        <li><a href="#">Refund Policy</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">DMCA Notice</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Setup Guides</a></li>
+        <li><a href="#">Firestick Setup</a></li>
+        <li><a href="#">Android Setup</a></li>
+        <li><a href="#">Smart TV Setup</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© IPTVV CANADA 2025 — All Rights Reserved</p>
+    <p>IPTVV Canada does not host or stream any copyrighted content. All content is provided by third-party providers.</p>
+  </div>
+</footer>
+
+<script>
+function showGuide(id, btn) {
+  // hide all panels
+  document.querySelectorAll('.guide-panel').forEach(p => p.classList.remove('visible'));
+  // deactivate all buttons
+  document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+  // show selected
+  const panel = document.getElementById('guide-' + id);
+  if (panel) panel.classList.add('visible');
+  if (btn) btn.classList.add('active');
+  // scroll to guide
+  document.querySelector('.guide-container').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function switchMethod(btn, contentId) {
+  const panel = btn.closest('.guide-panel');
+  panel.querySelectorAll('.method-tab').forEach(t => t.classList.remove('active'));
+  panel.querySelectorAll('.method-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  const content = document.getElementById(contentId);
+  if (content) content.classList.add('active');
+}
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    item.closest('.faq-list').querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
